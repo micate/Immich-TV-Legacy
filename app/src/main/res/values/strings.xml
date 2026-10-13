@@ -315,4 +315,7 @@
     <string name="favorite_removed">Removed from favorites</string>
     <string name="favorite_add_failed">Failed to add to favorites</string>
     <string name="favorite_remove_failed">Failed to remove from favorites</string>
+    <string name="transform_center_inside">Center Inside (keep image width/height)</string>
+    <string name="transform_center_crop">Center Crop (fit screen)</string>
+    <string name="transform_safe_center_crop">Safe Center Crop (max crop percentage)</string>
 </resources>

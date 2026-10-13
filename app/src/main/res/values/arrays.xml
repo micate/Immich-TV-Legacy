@@ -59,9 +59,9 @@
     </string-array>
 
     <string-array name="glide_transformation_labels">
-        <item>Center Inside (keep image width/height)</item>
-        <item>Center Crop (fit screen)</item>
-        <item>Safe Center Crop (max crop percentage)</item>
+        <item>@string/transform_center_inside</item>
+        <item>@string/transform_center_crop</item>
+        <item>@string/transform_safe_center_crop</item>
     </string-array>
 
     <array name="glide_transformation_keys">

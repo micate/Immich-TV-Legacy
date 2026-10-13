@@ -19,7 +19,7 @@
 
 - 发布后，可从本仓库的 [Releases 页面](https://github.com/micate/Immich-TV-Legacy/releases) 获取对应版本附件；只有存在 APK 附件时才可直接下载安装，`Source code` 压缩包不是安装包。
 - 现在请按首页的[构建说明](../README.md#building-the-legacy-debug-apk)自行构建，或请可信的人协助构建。
-- 当前版本构建产物：`app/build/outputs/apk/debug/ImmichTV-6.1.0-legacy.2.apk`。后续版本请使用实际生成的文件名。
+- 当前版本构建产物：`app/build/outputs/apk/debug/ImmichTV-6.1.0-legacy.3.apk`。后续版本请使用实际生成的文件名。
 
 请保留构建时使用的签名密钥。默认 debug 签名一般是电脑本地自动生成的，不同电脑的签名通常不同；无法直接覆盖安装对方签名的 APK。
 
@@ -49,7 +49,7 @@ adb devices -l
 5. 安装 APK：
 
 ```sh
-adb -s 192.168.1.50:5555 install -r /path/to/ImmichTV-6.1.0-legacy.2.apk
+adb -s 192.168.1.50:5555 install -r /path/to/ImmichTV-6.1.0-legacy.3.apk
 ```
 
 看到 `Success` 后，从电视应用列表打开应用，也可以运行：
@@ -90,6 +90,20 @@ adb -s 192.168.1.50:5555 shell am start -n nl.giejay.android.tv.immich/.MainActi
 > HTTP 会在网络中明文传输凭证和媒体，只应在可信局域网中使用。具备合适证书和域名时优先使用 HTTPS。
 
 ## 6. 浏览照片与视频
+
+### 自动选择界面语言
+
+`6.1.0-legacy.3` 起，应用自动跟随电视的 Android 系统语言：中文环境显示简体中文，
+英文环境显示英文；保留上游法语和俄语翻译，其他未支持的语言回退到英文。
+登录界面、菜单、设置、播放器按钮和媒体信息标题均已补充中文翻译。
+中文日期按“年/月/日”的顺序显示。
+
+无需填写服务器语言，也不根据 IP 判断地区或修改电视系统设置。若更改电视语言后
+部分设置仍显示旧语言，请完全退出应用后重新启动（必要时在电视应用设置中“强行停止”
+再打开，无需清除数据）。当前没有应用内独立语言选择器。相册名、文件名、描述及服务器
+返回的地名属于用户数据，不会自动翻译。
+
+### 遥控器操作
 
 - 用遥控器方向键移动焦点，确认键打开项目，返回键回到上一层。
 - **Timeline**：时间线与回忆；**Albums**：相册；**Photos**：媒体列表（也可能包含视频）。

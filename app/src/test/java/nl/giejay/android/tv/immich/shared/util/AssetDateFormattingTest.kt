@@ -32,6 +32,11 @@ class AssetDateFormattingTest {
     }
 
     @Test
+    fun `Chinese dates use year month day order`() = withLocale(Locale.SIMPLIFIED_CHINESE) {
+        assertEquals("2006年4月7日 星期五", formatAssetDate(april(7)))
+    }
+
+    @Test
     fun `non English dates use the default locale without English ordinals`() = withLocale(Locale.GERMANY) {
         assertEquals("Freitag, 7. April 2006", formatAssetDate(april(7)))
     }

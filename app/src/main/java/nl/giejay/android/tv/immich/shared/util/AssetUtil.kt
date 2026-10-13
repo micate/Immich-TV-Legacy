@@ -102,7 +102,9 @@ internal fun formatAssetDate(date: Date): String {
     val locale = Locale.getDefault()
     val isEnglish = locale.language == "en"
     val day = calendar[Calendar.DATE]
-    val formatString = if (isEnglish) {
+    val formatString = if (locale.language == "zh") {
+        "yyyy年M月d日 EEEE"
+    } else if (isEnglish) {
         // English: Friday, 7th April 2006
         when (day) {
             1, 21, 31 -> "EEEE, d'st' MMMM yyyy"

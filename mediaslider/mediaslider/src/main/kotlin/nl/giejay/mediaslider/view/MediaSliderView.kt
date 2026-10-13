@@ -284,7 +284,7 @@ open class MediaSliderView(context: Context) : ConstraintLayout(context) {
 
     fun setItems(items: List<SliderItemViewHolder>) {
         if (items.isEmpty()) {
-            Toast.makeText(context, "No items received to show in slideshow", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, R.string.slideshow_empty, Toast.LENGTH_SHORT).show()
             return
         }
         if (controller.slideShowPlaying) {

@@ -27,6 +27,19 @@ not Android 6 compatibility builds.
 Updates require the same signing key to preserve the existing installation.
 See the Chinese guide for ADB commands, signing conflicts and troubleshooting.
 
+## Language / 界面语言
+
+The app follows the TV's Android system language using native resource selection.
+Chinese locales use Simplified Chinese translations for the app and media viewer;
+English is the default fallback. Existing upstream French and Russian resources
+are retained (coverage may vary). No IP-based detection or forced system language
+changes are used. After changing the TV language, fully close and relaunch the
+app if cached settings labels still use the previous language.
+
+从 `6.1.0-legacy.3` 起，中文系统自动显示简体中文，包括登录、菜单、设置、
+播放器与媒体信息。中文日期使用年月日顺序；文件名、相册名、服务器返回的描述
+和地名等用户数据不会被自动翻译。目前没有独立的应用内语言选择器。
+
 ## Legacy compatibility
 
 - Minimum Android version: **6.0 / API 23**.
