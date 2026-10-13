@@ -1,4 +1,45 @@
-# Immich Android TV
+# Immich TV Legacy
+
+An **unofficial Android 6.0+ compatibility fork** of
+[Immich Android TV](https://github.com/giejay/Immich-Android-TV), for older TVs.
+This project is not an official Immich client. Upstream attribution and licensing
+are preserved; the original project documentation follows below.
+
+## Legacy compatibility
+
+- Minimum Android version: **6.0 / API 23**.
+- Tested on a Xiaomi MiTV4-ANSM0 (Android 6.0.1, 32-bit ARM) with **Immich Server 3.1.0**.
+- Verified login, timeline, full-screen PNG viewing, video rendering and memories.
+  Not all codecs, audio output, or screensaver features have been verified.
+- Uses AndroidX Core 1.17.0 and older Firebase versions compatible with API 23.
+- Fixes media-opening crashes caused by `Locale.Category`, absent on Android 6.
+- Retains the upstream application ID. Updating an existing installation requires
+  the same signing key; differently signed builds cannot replace each other.
+- This compatibility build does not imply ongoing security support for Android 6.
+  Prefer a trusted LAN and a dedicated, limited-permission Immich API key.
+
+## Building the Legacy debug APK
+
+Use JDK 21 and an Android SDK with API 37 and the required build tools installed.
+Set `JAVA_HOME` and `ANDROID_HOME`, then run:
+
+```sh
+cp app/google-services.example app/google-services.json
+cp app/strings_other.xml.example app/src/main/res/values/strings_other.xml
+./gradlew :app:assembleDebug
+./gradlew :app:testDebugUnitTest --tests '*AssetDateFormattingTest' --tests '*AssetMetaDataMappingTest'
+```
+
+The example configs are placeholders, not production Firebase or demo credentials.
+The APK is generated under `app/build/outputs/apk/debug/` and uses the standard
+Android debug key by default. To reuse your own debug signing key, set
+`DEBUG_KEYSTORE_PATH`, `DEBUG_KEYSTORE_PASSWORD`, `DEBUG_KEY_ALIAS`, and
+`DEBUG_KEY_PASSWORD` in your local environment. Never commit keys or credentials.
+Release builds require your own release signing configuration.
+
+---
+
+## Original upstream documentation
 
 Immich is a self hosted backup solution for photos and videos. Current features include:
 

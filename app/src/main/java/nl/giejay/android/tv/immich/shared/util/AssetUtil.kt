@@ -98,7 +98,8 @@ fun Asset.toSliderItem(): SliderItem {
 internal fun formatAssetDate(date: Date): String {
     val calendar = Calendar.getInstance()
     calendar.time = date
-    val locale = Locale.getDefault(Locale.Category.FORMAT)
+    // Locale.Category is unavailable on Android 6 (API 23).
+    val locale = Locale.getDefault()
     val isEnglish = locale.language == "en"
     val day = calendar[Calendar.DATE]
     val formatString = if (isEnglish) {

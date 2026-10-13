@@ -13,16 +13,26 @@ android {
     compileSdk = 37
     defaultConfig {
         applicationId "nl.giejay.android.tv.immich"
-        minSdkVersion 24
+        minSdkVersion 23
         targetSdkVersion 37
-        versionCode 147
-        versionName "6.1.0"
+        versionCode 148
+        versionName "6.1.0-legacy.2"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         testOptions.unitTests.includeAndroidResources = true
     }
 
     signingConfigs {
+        // Optional local key for updating an existing debug installation.
+        // Otherwise, use the standard Android debug keystore.
+        debug {
+            if (System.getenv('DEBUG_KEYSTORE_PATH')) {
+                storeFile file(System.getenv('DEBUG_KEYSTORE_PATH'))
+                storePassword System.getenv('DEBUG_KEYSTORE_PASSWORD')
+                keyAlias System.getenv('DEBUG_KEY_ALIAS')
+                keyPassword System.getenv('DEBUG_KEY_PASSWORD')
+            }
+        }
         release {
             storeFile file(System.getenv("RELEASE_KEYSTORE_PATH") ?: "keystore")
             storePassword System.getenv("RELEASE_KEYSTORE_PASSWORD") ?: "dummy"
