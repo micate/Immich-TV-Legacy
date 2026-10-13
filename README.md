@@ -5,6 +5,28 @@ An **unofficial Android 6.0+ compatibility fork** of
 This project is not an official Immich client. Upstream attribution and licensing
 are preserved; the original project documentation follows below.
 
+## Getting started / 使用指南
+
+**[中文使用指南：获取 APK → 安装 → API Key 登录 → 更新与故障排查](docs/USAGE.zh-CN.md)**
+
+This TV app browses an existing Immich server; it does not host the server or
+back up your phone. There are currently **no prebuilt APK releases** in this fork.
+Build the Legacy APK using the instructions below, or check the fork's
+[Releases page](https://github.com/micate/Immich-TV-Legacy/releases) for future APK
+attachments. A source archive is not an installable APK, and upstream APKs are
+not Android 6 compatibility builds.
+
+1. Put your TV and Immich server on a trusted network where they can communicate.
+2. Build and sideload the APK using your TV's installer or network ADB.
+3. Sign into the Immich web app and create a dedicated, limited-permission API key.
+4. On TV choose **Sign in by API key**, enter your server's root URL and the key,
+   then select **Submit**. Direct username/password login is not available.
+5. Use the remote's direction, OK and Back buttons to browse. Keep SSL verification
+   enabled; do not publish your API key or expose ADB to the internet.
+
+Updates require the same signing key to preserve the existing installation.
+See the Chinese guide for ADB commands, signing conflicts and troubleshooting.
+
 ## Legacy compatibility
 
 - Minimum Android version: **6.0 / API 23**.
@@ -21,9 +43,11 @@ are preserved; the original project documentation follows below.
 ## Building the Legacy debug APK
 
 Use JDK 21 and an Android SDK with API 37 and the required build tools installed.
-Set `JAVA_HOME` and `ANDROID_HOME`, then run:
+Set `JAVA_HOME` and `ANDROID_HOME`, then clone this fork and run:
 
 ```sh
+git clone --branch android6-compat https://github.com/micate/Immich-TV-Legacy.git
+cd Immich-TV-Legacy
 cp app/google-services.example app/google-services.json
 cp app/strings_other.xml.example app/src/main/res/values/strings_other.xml
 ./gradlew :app:assembleDebug
@@ -40,6 +64,12 @@ Release builds require your own release signing configuration.
 ---
 
 ## Original upstream documentation
+
+The following describes upstream features and setup. For this fork, use the
+Legacy build instructions and usage guide above; upstream release APKs and
+upstream cloning instructions do not include this fork's compatibility fixes.
+Upstream feature claims are not a guarantee that every feature has been tested
+on Android 6.
 
 Immich is a self hosted backup solution for photos and videos. Current features include:
 
